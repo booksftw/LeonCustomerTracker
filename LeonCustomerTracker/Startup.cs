@@ -26,8 +26,8 @@ namespace LeonCustomerTracker
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            // * Sample of Adding DB into controller
-            //services.AddDbContext<PrimaryDatabaseContext>();
+            // * Sample of Adding DB for controllers
+            services.AddDbContext<PrimaryDatabaseContext>();
 
             // * Sample of injecting a dependency into controller
             //services.AddSingleton<IMyDependency, MyDependency>();

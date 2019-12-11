@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using LeonCustomerTracker.Models;
 
 namespace LeonCustomerTracker.Database
 {
@@ -14,23 +15,17 @@ namespace LeonCustomerTracker.Database
         //public DbSet<Blog> Blogs { get; set; }
         //public DbSet<Post> Posts { get; set; }
 
-        public DbSet<NZTests> NZTest { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
         public PrimaryDatabaseContext(DbContextOptions<PrimaryDatabaseContext> options) : base(options)
         { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // * Sample of configuring the Database server to Connect with the correct database
-            //optionsBuilder.UseMySql("Server = localhost; Database = foodplan; User = root; Password = zachary46; ");
-
-            // Todo Make password to secret.
-            //optionsBuilder.UseMySql("Server = localhost; Database = Customer; User = root; Password = zachary46; ");
-
-            optionsBuilder.UseSqlServer("server=DESKTOP-1S3IDSC;database=leoncustomertracker;trusted_connection=true;");
-
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-1S3IDSC;Initial Catalog=leoncustomertracker;Integrated Security=True");
         }
 
+        // Sample code for relationships
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // * Sample of creating relationships
@@ -53,12 +48,6 @@ namespace LeonCustomerTracker.Database
             //    .HasForeignKey(af => af.FoodItemId);
         }
 
-        public class NZTests
-        {
-            [Key]
-            public int Id { get; set; }
-            public string Name { get; set; }
-        }
 
         // * Sample of defining the tables and their relationships
         //public class ActionPlan
@@ -87,6 +76,24 @@ namespace LeonCustomerTracker.Database
 
         //    public int FoodItemId { get; set; }
         //    public FoodItem FoodItem { get; set; }
+        //}
+        
+        // Sample Enum
+        //public enum EffectiveRank
+        //{
+        //    _0 = 0,
+        //    _1 = 1,
+        //    _2 = 2,
+        //    _3 = 3,
+        //    _4 = 4,
+        //    _5 = 5
+        //}
+
+        //public class Report
+        //{
+        //    [Key]
+        //    public int Id { get; set; }
+        //    public EffectiveRank effectiveRank { get; set; }
         //}
     }
 }
