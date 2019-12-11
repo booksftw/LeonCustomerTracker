@@ -14,6 +14,10 @@ namespace LeonCustomerTracker.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
+        // NZ...
+        // Constructor automatically created if ommited. 
+        // You can inject your database into the constructor and save it to the props or you can inject it into each controller as singleton.
+
         [HttpGet("[action]")]
         public IEnumerable<WeatherForecast> WeatherForecasts()
         {

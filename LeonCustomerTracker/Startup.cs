@@ -1,3 +1,4 @@
+using LeonCustomerTracker.Database;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -5,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 
 namespace LeonCustomerTracker
 {
@@ -18,9 +20,17 @@ namespace LeonCustomerTracker
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
+        // NZ You can inject services entities into the controllers here.
+        // NZ You can register your DB here and it'll get injected into the controller as singleton. 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            // * Sample of Adding DB into controller
+            //services.AddDbContext<PrimaryDatabaseContext>();
+
+            // * Sample of injecting a dependency into controller
+            //services.AddSingleton<IMyDependency, MyDependency>();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
